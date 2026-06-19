@@ -2,7 +2,7 @@
 # MAGIC %md
 # MAGIC # 01 · Notebook Development Standards
 # MAGIC
-# MAGIC **CMA Databricks Training — Engineering Best Practices**
+# MAGIC **Databricks Training — Engineering Best Practices**
 # MAGIC
 # MAGIC This notebook demonstrates the four standards from the training deck:
 # MAGIC

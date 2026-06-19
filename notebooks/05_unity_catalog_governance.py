@@ -2,7 +2,7 @@
 # MAGIC %md
 # MAGIC # 05 · Unity Catalog Governance Model
 # MAGIC
-# MAGIC **CMA Databricks Training — Engineering Best Practices**
+# MAGIC **Databricks Training — Engineering Best Practices**
 # MAGIC
 # MAGIC Unity Catalog is the governance layer for the lakehouse. Everything is addressed
 # MAGIC through a **three-level namespace** and secured with `GRANT` statements.

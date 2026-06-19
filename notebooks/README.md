@@ -1,6 +1,6 @@
-# CMA Databricks Training — Demo Notebooks
+# Databricks Training — Demo Notebooks
 
-Hands-on demo notebooks for the LBMC Databricks Training & Enablement deck. Each notebook
+Hands-on demo notebooks for the Databricks Training & Enablement deck. Each notebook
 is small and self-contained, and uses **Databricks sample data** (`samples.nyctaxi.trips`,
 inline `VALUES`, and the built-in foundation models) so it runs with minimal setup.
 

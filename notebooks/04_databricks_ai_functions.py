@@ -2,7 +2,7 @@
 # MAGIC %md
 # MAGIC # 04 · Databricks AI Functions
 # MAGIC
-# MAGIC **CMA Databricks Training — AI Functions**
+# MAGIC **Databricks Training — AI Functions**
 # MAGIC
 # MAGIC Apply AI directly to your data with **plain SQL — no ML infrastructure required**.
 # MAGIC These functions are available in SQL, notebooks, Declarative Pipelines, and Workflows
@@ -37,7 +37,7 @@
 # MAGIC   review,
 # MAGIC   ai_analyze_sentiment(review) AS sentiment
 # MAGIC FROM VALUES
-# MAGIC   ('The CMA Awards stream was flawless this year, loved it!'),
+# MAGIC   ('The product launch event stream was flawless this year, loved it!'),
 # MAGIC   ('Tickets were overpriced and the app kept crashing.'),
 # MAGIC   ('The show started at 8pm.')
 # MAGIC AS feedback(review);
@@ -80,19 +80,19 @@
 # MAGIC %sql
 # MAGIC -- Generate + summarize + translate
 # MAGIC SELECT
-# MAGIC   ai_gen('Write a one-sentence welcome for new CMA members.') AS generated,
+# MAGIC   ai_gen('Write a one-sentence welcome for new members.') AS generated,
 # MAGIC   ai_summarize(
-# MAGIC     'The Country Music Association was founded in 1958 to promote country music worldwide. '
-# MAGIC     || 'It hosts the annual CMA Awards and CMA Fest, drawing fans from across the globe.',
+# MAGIC     'Delta Lake is an open-source storage layer that brings ACID transactions to data lakes. '
+# MAGIC     || 'It enables reliable reads and writes, time travel, and scalable metadata handling.',
 # MAGIC     20  -- target word count
 # MAGIC   ) AS summary,
-# MAGIC   ai_translate('Welcome to the CMA Awards!', 'es') AS spanish;
+# MAGIC   ai_translate('Welcome to the data platform!', 'es') AS spanish;
 
 # COMMAND ----------
 
 # MAGIC %sql
 # MAGIC -- Semantic similarity: how related are two phrases? (0 = unrelated, 1 = identical meaning)
-# MAGIC SELECT ai_similarity('country music awards show', 'CMA Awards ceremony') AS similarity;
+# MAGIC SELECT ai_similarity('annual awards ceremony', 'yearly awards show') AS similarity;
 
 # COMMAND ----------
 
@@ -151,7 +151,7 @@
 # MAGIC SELECT ai_query(
 # MAGIC   'databricks-meta-llama-3-3-70b-instruct',
 # MAGIC   'Summarize in one sentence: ' ||
-# MAGIC   'The CMA Fest is a four-day music festival held every June in Nashville, Tennessee.'
+# MAGIC   'The annual music festival is a four-day event held every June in Nashville, Tennessee.'
 # MAGIC ) AS summary;
 
 # COMMAND ----------
@@ -188,7 +188,7 @@
 # MAGIC %sql
 # MAGIC CREATE OR REPLACE TEMP VIEW member_reviews AS
 # MAGIC SELECT * FROM VALUES
-# MAGIC   (1, 'Best CMA Fest ever, the lineup was incredible!'),
+# MAGIC   (1, 'Best festival ever, the lineup was incredible!'),
 # MAGIC   (2, 'Renewal page threw an error three times before it worked.'),
 # MAGIC   (3, 'Could you add more parking near the venue?')
 # MAGIC AS r(review_id, review_text);

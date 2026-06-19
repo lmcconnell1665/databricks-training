@@ -2,7 +2,7 @@
 # MAGIC %md
 # MAGIC # 02 · Delta Lake & Compute Best Practices
 # MAGIC
-# MAGIC **CMA Databricks Training — Engineering Best Practices**
+# MAGIC **Databricks Training — Engineering Best Practices**
 # MAGIC
 # MAGIC Delta Lake gives you ACID transactions, time travel, and fast queries on the lakehouse.
 # MAGIC This notebook walks through the practices from the deck on a small sample table:

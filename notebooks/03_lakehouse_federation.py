@@ -2,7 +2,7 @@
 # MAGIC %md
 # MAGIC # 03 · Setting Up Lakehouse Federation
 # MAGIC
-# MAGIC **CMA Databricks Training — Redshift Federation & Unity Catalog**
+# MAGIC **Databricks Training — Redshift Federation & Unity Catalog**
 # MAGIC
 # MAGIC Lakehouse Federation lets you **query external databases directly from Databricks —
 # MAGIC without moving or copying data**. The external source is exposed as a *foreign catalog*

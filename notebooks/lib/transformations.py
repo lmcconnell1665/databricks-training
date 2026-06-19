@@ -1,4 +1,4 @@
-"""Reusable business logic for the CMA Databricks training demo.
+"""Reusable business logic for the Databricks training demo.
 
 This module exists to demonstrate the "Modular Code" standard: keep business
 logic in plain .py files that can be unit-tested with pytest and imported into

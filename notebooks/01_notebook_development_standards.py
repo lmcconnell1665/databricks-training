@@ -26,6 +26,9 @@
 
 # COMMAND ----------
 
+#jr test
+#add two lines
+
 print("Current user       :", spark.sql("SELECT current_user()").first()[0])
 print("Notebook path      :",
       dbutils.notebook.entry_point.getDbutils().notebook().getContext().notebookPath().get())

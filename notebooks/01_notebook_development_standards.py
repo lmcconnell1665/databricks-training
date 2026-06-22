@@ -9,7 +9,7 @@
 # MAGIC | **Version Control** | Use Databricks Repos + Git. Branch for isolated work. Never commit to `main` directly. |
 # MAGIC | **Modular Code** | Refactor prototypes into reusable `.py` modules; import them into notebooks. |
 # MAGIC | **Testing** | Write `pytest` unit tests in `.py` files; run them before production. |
-# MAGIC | **Production Jobs** | Schedule with Lakeflow Jobs against a committed repo version — not the notebook **Schedule** button. |
+# MAGIC | **Production Jobs** | Schedule with Lakeflow Jobs against a committed repo version — not the notebook **Schedule** button. |Ben was here
 
 # COMMAND ----------
 
@@ -51,7 +51,7 @@ if repo_root not in sys.path:
 
 from lib.transformations import classify_trip, fare_per_mile  # noqa: E402
 
-print("fare_per_mile(20.0, 5.0) =", fare_per_mile(20.0, 5.0))
+print("fare_per_mile(21.0, 6.0) =", fare_per_mile(20.0, 5.0))
 print("classify_trip(25.0)      =", classify_trip(25.0))
 
 # COMMAND ----------

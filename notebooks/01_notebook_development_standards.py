@@ -16,6 +16,8 @@
 # MAGIC %md
 # MAGIC ## 1. Version Control
 # MAGIC
+# MAGIC Luke was here.
+# MAGIC
 # MAGIC This notebook lives in a **Databricks Repo** backed by Git. Day-to-day flow:
 # MAGIC
 # MAGIC 1. Clone the repo into **Workspace → Repos**.

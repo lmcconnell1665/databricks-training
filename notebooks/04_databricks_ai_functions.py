@@ -97,49 +97,6 @@
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ## `ai_forecast` — time-series forecasting
-# MAGIC Give it a table of (timestamp, value) and ask for N future periods. Here we build a
-# MAGIC tiny daily series inline and forecast the next 7 days.
-
-# COMMAND ----------
-
-# MAGIC %sql
-# MAGIC WITH daily_sales AS (
-# MAGIC   SELECT explode(sequence(DATE'2025-01-01', DATE'2025-01-21', INTERVAL 1 DAY)) AS ds
-# MAGIC ),
-# MAGIC series AS (
-# MAGIC   SELECT ds, 100 + datediff(ds, DATE'2025-01-01') * 5 AS revenue
-# MAGIC   FROM daily_sales
-# MAGIC )
-# MAGIC SELECT * FROM AI_FORECAST(
-# MAGIC   TABLE(series),
-# MAGIC   horizon => 7,
-# MAGIC   time_col => 'ds',
-# MAGIC   value_col => 'revenue'
-# MAGIC );
-
-# COMMAND ----------
-
-# MAGIC %md
-# MAGIC ## `ai_parse_document` — document intelligence
-# MAGIC Extract structured content (text, tables as HTML, figures, bounding boxes) from PDFs/images
-# MAGIC stored in a **Unity Catalog volume**. Replace the path with your own volume of documents.
-# MAGIC
-# MAGIC Returns: `document.pages`, `document.elements`, `metadata`, `error_status`.
-# MAGIC
-# MAGIC ```sql
-# MAGIC SELECT
-# MAGIC   path,
-# MAGIC   ai_parse_document(content) AS parsed
-# MAGIC FROM read_files(
-# MAGIC   '/Volumes/<catalog>/<schema>/<volume>/docs/',
-# MAGIC   format => 'binaryFile'
-# MAGIC );
-# MAGIC ```
-
-# COMMAND ----------
-
-# MAGIC %md
 # MAGIC ## `ai_query` — apply any model
 # MAGIC Use a pre-deployed foundation model (no endpoint setup) for arbitrary prompts.
 # MAGIC
@@ -153,28 +110,6 @@
 # MAGIC   'Summarize in one sentence: ' ||
 # MAGIC   'The annual music festival is a four-day event held every June in Nashville, Tennessee.'
 # MAGIC ) AS summary;
-
-# COMMAND ----------
-
-# MAGIC %md
-# MAGIC **Example 2 — parse documents, then extract structured fields** (reference pattern; needs a volume of docs):
-# MAGIC
-# MAGIC ```sql
-# MAGIC WITH parsed AS (
-# MAGIC   SELECT path, ai_parse_document(content) AS doc
-# MAGIC   FROM read_files('/Volumes/.../invoices/', format => 'binaryFile')
-# MAGIC )
-# MAGIC SELECT
-# MAGIC   path,
-# MAGIC   ai_query(
-# MAGIC     'databricks-claude-sonnet-4',
-# MAGIC     'Extract vendor, date, and total from: ' || to_json(doc)
-# MAGIC   ) AS info
-# MAGIC FROM parsed;
-# MAGIC ```
-# MAGIC
-# MAGIC **Pre-deployed models (no endpoint setup):** Meta Llama 3.3 70B · Claude Sonnet · GPT variants ·
-# MAGIC Gemini · plus custom fine-tuned models via serving endpoints.
 
 # COMMAND ----------
 

@@ -4,8 +4,6 @@
 # MAGIC
 # MAGIC **Databricks Training — Engineering Best Practices**
 # MAGIC
-# MAGIC This notebook demonstrates the four standards from the training deck:
-# MAGIC
 # MAGIC | Standard | Idea |
 # MAGIC |---|---|
 # MAGIC | **Version Control** | Use Databricks Repos + Git. Branch for isolated work. Never commit to `main` directly. |
@@ -28,7 +26,6 @@
 
 # COMMAND ----------
 
-print("Databricks Runtime :", spark.conf.get("spark.databricks.clusterUsageTags.sparkVersion", "n/a"))
 print("Current user       :", spark.sql("SELECT current_user()").first()[0])
 print("Notebook path      :",
       dbutils.notebook.entry_point.getDbutils().notebook().getContext().notebookPath().get())
@@ -84,35 +81,7 @@ display(enriched)
 # COMMAND ----------
 
 # MAGIC %md
-# MAGIC ## 3. Testing
-# MAGIC
-# MAGIC Unit tests live in `notebooks/tests/test_transformations.py`. Run them with `pytest`
-# MAGIC from a notebook cell during development, or as a CI / Lakeflow Job step before deploy.
-
-# COMMAND ----------
-
-# MAGIC %sh
-# MAGIC cd "$(dirname "$0")" 2>/dev/null; cd /Workspace/Repos 2>/dev/null
-# MAGIC # On a real cluster, run from the repo root:
-# MAGIC #   python -m pytest notebooks/tests -q
-# MAGIC echo "Run: python -m pytest notebooks/tests -q"
-
-# COMMAND ----------
-
-# Programmatic equivalent that works from inside the notebook environment.
-import subprocess
-
-result = subprocess.run(
-    [sys.executable, "-m", "pytest", os.path.join(repo_root, "tests"), "-q"],
-    capture_output=True, text=True,
-)
-print(result.stdout)
-print(result.stderr)
-
-# COMMAND ----------
-
-# MAGIC %md
-# MAGIC ## 4. Parameterization & Production Jobs
+# MAGIC ## 3. Parameterization & Production Jobs
 # MAGIC
 # MAGIC Notebooks accept parameters via **widgets**, so the same notebook can be reused with
 # MAGIC different inputs from a Lakeflow Job — no editing required.

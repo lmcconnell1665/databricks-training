@@ -23,8 +23,8 @@
 
 # COMMAND ----------
 
-dbutils.widgets.text("target_catalog", "main", "Target catalog")
-dbutils.widgets.text("target_schema", "training", "Target schema")
+dbutils.widgets.text("target_catalog", "cma_training", "Target catalog")
+dbutils.widgets.text("target_schema", "luke_training", "Target schema")
 
 catalog = dbutils.widgets.get("target_catalog")
 schema = dbutils.widgets.get("target_schema")
@@ -136,21 +136,12 @@ spark.sql(f"DESCRIBE DETAIL {table}").select("format", "numFiles", "sizeInBytes"
 
 # COMMAND ----------
 
-for key in [
-    "spark.databricks.clusterUsageTags.clusterName",
-    "spark.databricks.clusterUsageTags.autoTerminationMinutes",
-    "spark.databricks.clusterUsageTags.clusterScalingType",
-]:
-    print(f"{key:60s} = {spark.conf.get(key, 'n/a (serverless or unavailable)')}")
-
-# COMMAND ----------
-
 # MAGIC %md
 # MAGIC ### Cleanup (optional)
 # MAGIC Uncomment to drop the demo tables when you're done.
 
 # COMMAND ----------
 
-# spark.sql(f"DROP TABLE IF EXISTS {catalog}.{schema}.taxi_trips_demo")
-# spark.sql(f"DROP TABLE IF EXISTS {catalog}.{schema}.taxi_trips_clustered")
+spark.sql(f"DROP TABLE IF EXISTS {catalog}.{schema}.taxi_trips_demo")
+spark.sql(f"DROP TABLE IF EXISTS {catalog}.{schema}.taxi_trips_clustered")
 print("Done.")
